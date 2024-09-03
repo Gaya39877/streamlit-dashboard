@@ -1,19 +1,22 @@
 import mysql.connector
 import streamlit as st
 
-# Connection
-conn = mysql.connector.connect(
-    host='localhost',
-    port='3306',
-    user='root',
-    passwd='',
-    db='mydb'
+try:
+    # Connection
+    conn = mysql.connector.connect(
+        host='localhost',
+        port='3306',
+        user='root',
+        passwd='',
+        db='mydb'
+    )
+    c = conn.cursor()
 
-)
-c=conn.cursor()
+    # fetch
+    def view_all_data():
+        c.execute('SELECT * FROM insurance ORDER BY id ASC')
+        data = c.fetchall()
+        return data
 
-# fetch
-def view_all_data():
-    c.execute('select * from insurance order by id asc')
-    data=c.fetchall()
-    return data
+except mysql.connector.Error as err:
+    st.error(f"Error: {err}")
