@@ -173,8 +173,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
-from numerize.numerize import numerize 
-from query import *
+from numerize.numerize import numerize
+from query import view_all_data
 import time
 
 # Ensure this is the first Streamlit command
