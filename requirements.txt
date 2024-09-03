@@ -3,3 +3,4 @@ pandas==2.2.2
 plotly==5.24.0  # or simply 'plotly' without specifying the version
 streamlit-option-menu
 numerize
+mysql-connector-python
