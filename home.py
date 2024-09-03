@@ -178,7 +178,7 @@ import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
 from numerize.numerize import numerize 
-from query import *
+from query import view_all_data
 import time
 
 st.subheader("🔔 Insurance Descriptive Analysis")
