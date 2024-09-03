@@ -2,8 +2,8 @@ import mysql.connector
 import streamlit as st
 import pandas as pd
 
+# Connection setup
 try:
-    # Connection
     conn = mysql.connector.connect(
         host='localhost',
         port='3306',
@@ -12,19 +12,13 @@ try:
         db='mydb'
     )
     c = conn.cursor()
-
-    # fetch
-    def view_all_data():
-        c.execute('SELECT * FROM insurance ORDER BY id ASC')
-        data = c.fetchall()
-        return data
-
 except mysql.connector.Error as err:
     st.error(f"Error: {err}")
 
 # Function to fetch data
 def view_all_data():
     try:
+        # Use the global cursor `c`
         c.execute('SELECT * FROM insurance ORDER BY id ASC')
         data = c.fetchall()
         return data
