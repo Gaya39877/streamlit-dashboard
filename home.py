@@ -170,15 +170,16 @@
 # """
 
 import streamlit as st
+
+# st.set_page_config must be the first Streamlit command
+st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
+
 import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
 from numerize.numerize import numerize 
 from query import *
 import time
-
-# Make sure this is the first Streamlit command
-st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
 
 st.subheader("🔔 Insurance Descriptive Analysis")
 st.markdown("##")
