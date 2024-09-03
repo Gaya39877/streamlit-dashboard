@@ -89,7 +89,7 @@ def graphs():
         y=investment_by_business_type.index,
         orientation="h",
         title="<b> Investment by Business Type </b>",
-        color_discrete_sequence=["#0083b8"]*len(investment_by_business_type),
+        color_discrete_sequence=["#00712D"]*len(investment_by_business_type),
         template="plotly_white",
     )
 
@@ -107,7 +107,7 @@ def graphs():
         y="Investment",
         orientation="v",
         title="<b> Investment by State </b>",
-        color_discrete_sequence=["#0083b8"]*len(investment_state),
+        color_discrete_sequence=["#00712D"]*len(investment_state),
         template="plotly_white",
     )
 
