@@ -21,8 +21,27 @@
 # except mysql.connector.Error as err:
 #     st.error(f"Error: {err}")
 
-# test_import.py
-from query import view_all_data
+import mysql.connector
 
-print(view_all_data())
+# Function to fetch data
+def view_all_data():
+    try:
+        # Connection
+        conn = mysql.connector.connect(
+            host='localhost',
+            port='3306',
+            user='root',
+            passwd='',
+            db='mydb'
+        )
+        c = conn.cursor()
+
+        # fetch
+        c.execute('SELECT * FROM insurance ORDER BY id ASC')
+        data = c.fetchall()
+        return data
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+
 
