@@ -69,7 +69,9 @@ def view_all_data():
         return data
 
     except Error as err:
+        # Print error to the console
         print(f"Error: {err}")
+        # Return an empty list to handle in Streamlit
         return []
 
     finally:
@@ -77,3 +79,4 @@ def view_all_data():
             cursor.close()
         if conn:
             conn.close()
+
