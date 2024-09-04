@@ -216,14 +216,28 @@ df_selection = df.query(
 def Home():
     with st.expander("Tabular"):
         showData = st.multiselect('Filter:', df_selection.columns, default=[])
-        st.write(df_selection[showData])
+        st.write(df_selection[showData]) 
 
         # compute top analytics
         total_investment = df_selection["Investment"].sum()
-        investment_mode = df_selection["Investment"].mode()[0]
+
+        # Handle mode calculation safely
+        investment_mode = df_selection["Investment"].mode()
+        if not investment_mode.empty:
+            investment_mode_value = investment_mode[0]
+        else:
+            investment_mode_value = 0  # or any default value
+
         investment_mean = df_selection["Investment"].mean()
         investment_median = df_selection["Investment"].median()
         rating = df_selection["Rating"].sum()
+
+        # compute top analytics
+        # total_investment = df_selection["Investment"].sum()
+        # investment_mode = df_selection["Investment"].mode()[0]
+        # investment_mean = df_selection["Investment"].mean()
+        # investment_median = df_selection["Investment"].median()
+        # rating = df_selection["Rating"].sum()
 
         total1, total2, total3, total4, total5 = st.columns(5, gap='large')
         with total1:
@@ -231,7 +245,10 @@ def Home():
             st.metric(label="sum TZS", value=f"{total_investment:,.0f}")
         with total2:
             st.info('Most Frequent', icon="📌")
-            st.metric(label="mode TZS", value=f"{investment_mode:,.0f}")
+            st.metric(label="mode TZS", value=f"{investment_mode_value:,.0f}")
+        # with total2:
+        #     st.info('Most Frequent', icon="📌")
+        #     st.metric(label="mode TZS", value=f"{investment_mode:,.0f}")
         with total3:
             st.info('Average', icon="📌")
             st.metric(label="average TZS", value=f"{investment_mean:,.0f}")
