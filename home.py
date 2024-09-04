@@ -186,6 +186,13 @@ st.markdown("##")
 
 # fetch data
 result = view_all_data()
+# Debug: Check if data is fetched
+if not result:
+    st.error("No data fetched from the database.")
+else:
+    st.write("Data fetched successfully!")
+
+
 df = pd.DataFrame(result, columns=['Policy', 'Expiry', 'Location', 'State', 'Region', 'Investment', 'Construction', 'BusinessType', 'Earthquake', 'Flood', 'Rating', 'id'])
 
 # sidebar
